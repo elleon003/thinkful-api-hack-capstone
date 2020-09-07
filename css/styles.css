@@ -12,3 +12,89 @@ body {
 h1 {
   text-align:center;
 }
+
+
+/*********FORMS*********/
+/* HIDE RADIO */
+/* [type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+} */
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
+.btn {
+  padding: .75em 1.25em;
+  border-radius: 7%;
+  display: inline-block;
+  background-color:grey;
+  color: black;
+  margin: 1em 0;
+}
+
+a.btn {
+  text-decoration: none;
+}
+
+.hair-length-img {
+  width: 45%;
+}
+
+/*********VIDEOS*********/
+.video-display {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction:column;
+}
+
+.video-display iframe {
+  margin: .65em 0;
+}
+
+/*********DESKTOP STYLES**********/
+@media all and (min-width:992px) {
+  h2,
+  h3,
+  p {
+    text-align: center;
+  }
+
+  form {
+    display:flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+
+  #postal-code {
+    height: 1.5em;
+  }
+
+  .btn {
+    margin-left: .5em;
+  }
+
+  .video-display {
+    width: 60%;
+  }
+
+  .video-display iframe {
+    height: 450px;
+  }
+}
+
+
+
+@media all and (min-width: 1200px) {
+  .container {
+    width: 75%;
+  }
+}
