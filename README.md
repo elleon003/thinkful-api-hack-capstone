@@ -6,4 +6,4 @@ Discover hair tutorials to fit the day's weather. Frizzcast is an app that gives
 
 - Utilizes a custom, mobile first design
 - Uses jQuery, and developer written native JavaScript, HTML & CSS
-- Accesses data from Weatherbit, YouTube & Google's Location API's
+- Accesses data from Weatherbit & YouTube's API's
