@@ -13,6 +13,9 @@ h1 {
   text-align:center;
 }
 
+.hidden {
+  display:none;
+}
 
 /*********FORMS*********/
 /* HIDE RADIO */
@@ -42,6 +45,11 @@ h1 {
 
 a.btn {
   text-decoration: none;
+}
+
+button.btn:last-of-type {
+  display:block;
+  margin: 0 auto;
 }
 
 .hair-length-img {

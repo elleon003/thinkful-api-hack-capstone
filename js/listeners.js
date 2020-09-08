@@ -1,19 +1,10 @@
 `use strict`
 
-
-function renderPage() {
-  // Create each page of app
-}
-
-
 function formatQuery(params) {
   // function to format URL query for all API calls
   const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
   return queryItems.join('&');
 }
-
-
-
 
 function fetchWeather(postalCode) {
   // API call to Weatherbit - return error if response data.count===0;
@@ -34,7 +25,7 @@ function fetchWeather(postalCode) {
       return response.json();
     })
     .then(responseJson => formatWeatherParams(responseJson))
-    .catch(error => console.log(error));
+    .catch(error => renderPostalErrorPage(error));
   /*
     Responses I'm using:
     data.weather.description
@@ -49,6 +40,7 @@ function fetchWeather(postalCode) {
   */
 }
 
+// WEATHER INFO STOPS HERE - NEED TO PASS
 function formatWeatherParams(weatherResponse) {
   // function to distill info from weather fetch and distill for video search
   console.log(weatherResponse.data[0].city_name);
@@ -59,6 +51,7 @@ function formatWeatherParams(weatherResponse) {
   // Weatherbit returns wind speed @meters per sec, multiply converts to mph
   console.log(`Wind speed: ${(weatherResponse.data[0].wind_spd * 2.237).toFixed(1)} mph`);
   console.log(`Relative Humidity: ${weatherResponse.data[0].rh}`);
+  renderHairTypePage();
 }
 
 function fetchVideos(hairType, hairLength, ...weatherArgs) {
@@ -69,22 +62,47 @@ function fetchVideos(hairType, hairLength, ...weatherArgs) {
 
 function watchPostalForm() {
   // listener for postal code button -
-  $('#js-postal-code').submit(event => {
+  $('.js-page-display').on('submit', '#js-postal-code',(event => {
     event.preventDefault();
     const postalCode = $('#postal-code').val();
     fetchWeather(postalCode);
-  })
+  }));
+}
+
+function handleResetButton(){
+  $('.js-page-display').on('click', '.js-reset', () => {
+    renderHomePage();
+  });
+}
+
+function getUserResponse(choices) {
+  let value;
+  for (let choice in choices) {
+    if (choices[choice].checked) {
+      value = choices[choice].value;
+      break
+    }
+  }
+  return value;
 }
 
 function watchHairTypeForm() {
-  console.log("watchHairTypeForm")
+  $('.js-page-display').on('submit', '#js-hair-types', (event => {
+    event.preventDefault();
+    let userHairType = getUserResponse($('#js-hair-types').find('input[name=hair-type]'));
+    console.log(userHairType);
+    renderHairLengthPage();
+  }))
 }
+
+
 
 function watchHairLengthForm() {
   console.log("watchHairLengthForm")
 }
 
 function runApp(){
+  renderHomePage();
   watchPostalForm();
   watchHairTypeForm();
   watchHairLengthForm();
