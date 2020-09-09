@@ -25,44 +25,45 @@ function renderHairTypePage() {
     <form id="js-hair-types" class="user-submission">
       <label>
         <input type="radio" name="hair-type" value="1" required>
-          1
+          <img class="hair-type-img" src="img/hair-type-1.jpg" alt="straight hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="2A" required>
-          2A
+        <img class="hair-type-img" src="img/hair-type-2a.jpg" alt="gentle wavy hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="2B" required>
-          2B
+        <img class="hair-type-img" src="img/hair-type-2b.jpg" alt="s shaped wavy hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="2C" required>
-          2C
+        <img class="hair-type-img" src="img/hair-type-2c.jpg" alt="defined wavy hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="3A" required>
-          3A
+        <img class="hair-type-img" src="img/hair-type-3a.jpg" alt="loose curly hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="3B" required>
-          3B
+        <img class="hair-type-img" src="img/hair-type-3b.jpg" alt="spiral curly hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="3C" required>
-          3C
+        <img class="hair-type-img" src="img/hair-type-3c.jpg" alt="springy curly hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="4A" required>
-          4A
+        <img class="hair-type-img" src="img/hair-type-4a.jpg" alt="s shaped coily hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="4B" required>
-          4B
+        <img class="hair-type-img" src="img/hair-type-4b.jpg" alt="zig zag coily hair">
       </label>
       <label>
         <input type="radio" name="hair-type" value="4C" required>
-          4C
+        <img class="hair-type-img" src="img/hair-type-4c.jpg" alt="tight coily hair">
       </label>
+      <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Next: Hair Length">
     </form>
     <button class="btn js-reset">Start Over</button>
@@ -75,17 +76,22 @@ function renderHairLengthPage() {
     <h3>Select your closest hair length:</h3>
     <form id="js-hair-length" class="user-submission">
       <label>
-        <input type="radio" name="hair-length" value="short" required>
-          <img class="hair-length-img" src="Resources/short-wavy-hair.jpg" alt="Short hair, above the chin">
+        <input type="radio" name="hair-length" value="super short" required>
+          <img class="hair-length-img" src="img/super-short-coily-hair.jpg" alt="Super Short hair, up to 3 inches">
       </label>
       <label>
-        <input type="radio" name="hair-length" value="medium" required>
-          <img class="hair-length-img" src="Resources/shoulder-length-curly-hair.jpg" alt="Medium length hair, down to, but not past the shoulders">
+        <input type="radio" name="hair-length" value="short" required>
+          <img class="hair-length-img" src="img/short-wavy-hair.jpg" alt="Short hair, above the chin">
+      </label>
+      <label>
+        <input type="radio" name="hair-length" value="midlength" required>
+          <img class="hair-length-img" src="img/mid-length-curly-hair.jpg" alt="Medium length hair, down to, but not past the shoulders">
       </label>
       <label>
         <input type="radio" name="hair-length" value="long" required>
-          <img class="hair-length-img" src="Resources/long-wavy-hair.jpg" alt="Long hair, past shoulders">
+          <img class="hair-length-img" src="img/long-wavy-hair.jpg" alt="Long hair, past shoulders">
       </label>
+      <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Show Me Some Styles!">
     </form>
     <button class="btn js-reset">Start Over</button>
@@ -107,13 +113,15 @@ function renderVideoListing(videos) {
 function renderResultsPage(videoFormattedList){
   $('h2').text('Weather for:');
   $('.js-page-display').html(`
-    <h3 id="js-location">${userInfo['city']}, ${userInfo['state']}</h3>
-    <p class="weather-results"><img src="img/icons/${userInfo['weather icon']}.png" alt="${userInfo['description']}"> ${userInfo['temp']}&#8457 ${userInfo['description']}</p>
-    <p class="weather-results">Winds: ${userInfo['wind speed']}mph, humidity ${userInfo['relative humidity']}&#37;</p>
-    <div class="js-videos video-display">
-      ${videoFormattedList}
+    <div class="final-results">
+      <h3 id="js-location">${userInfo['city']}, ${userInfo['state']}</h3>
+      <p class="weather-results"><img src="img/icons/${userInfo['weather icon']}.png" alt="${userInfo['description']}"> ${userInfo['temp']}&#8457 ${userInfo['description']}</p>
+      <p class="weather-results">Winds: ${userInfo['wind speed']}mph, Humidity ${userInfo['relative humidity']}&#37;</p>
+      <div class="js-videos video-display">
+        ${videoFormattedList}
+      </div>
+      <button class="btn js-reset">Start Over</button>
     </div>
-    <button class="btn js-reset">Start Over</button>
     `)
 }
 // userInfo['relative humidity']

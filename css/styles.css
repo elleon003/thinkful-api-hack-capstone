@@ -9,8 +9,11 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-  text-align:center;
+h1,
+h2,
+h3,
+p {
+  text-align: center;
 }
 
 .hidden {
@@ -18,13 +21,20 @@ h1 {
 }
 
 /*********FORMS*********/
+.user-submission {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items: baseline;
+}
+
 /* HIDE RADIO */
-/* [type=radio] { 
-  position: absolute;
+[type=radio] { 
+    position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
-} */
+}
 
 [type=radio] + img {
   cursor: pointer;
@@ -34,27 +44,45 @@ h1 {
   outline: 2px solid #f00;
 }
 
+.break {
+  flex-basis: 100%;
+  height:0;
+}
+
 .btn {
   padding: .75em 1.25em;
   border-radius: 7%;
   display: inline-block;
   background-color:grey;
   color: black;
-  margin: 1em 0;
+  margin: 1em;
 }
 
 a.btn {
   text-decoration: none;
 }
 
+input.btn {
+  max-height: 4em;
+}
+
 button.btn:last-of-type {
   display:block;
-  margin: 0 auto;
+  margin: 0 auto 2em auto;
+}
+
+.hair-type-img {
+  max-height: 200px;
+  padding: 0 1em;
 }
 
 .hair-length-img {
-  width: 45%;
+  width:100%;
+  height:100%;
+  margin: .5em 0;
+  box-shadow: 5px 5px rgb(185, 184, 184);
 }
+
 
 /*********VIDEOS*********/
 .video-display {
@@ -68,19 +96,34 @@ button.btn:last-of-type {
   margin: .65em 0;
 }
 
+/*********FINAL RESULTS PAGE*********/
+.final-results {
+  text-align: center;
+}
+
+.weather-results {
+  font-size: 1.25em;
+  font-style: italic;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  margin: .65em 0;
+}
+
+
+/*********TABLET/LANDSCAPE STYLES*********/
+@media all and (min-width: 670px) {
+  .hair-length-img {
+    width:65%;
+    height:65%;
+    display:block;
+    margin: .65em auto;
+  }
+}
+
+
 /*********DESKTOP STYLES**********/
 @media all and (min-width:992px) {
-  h2,
-  h3,
-  p {
-    text-align: center;
-  }
-
-  form {
-    display:flex;
-    justify-content: center;
-    align-items: baseline;
-  }
 
   #postal-code {
     height: 1.5em;
@@ -90,15 +133,25 @@ button.btn:last-of-type {
     margin-left: .5em;
   }
 
+  .hair-type-img {
+    max-height: 350px;
+    padding: 0 1em;
+  }
+
+  .hair-length-img {
+    width:275px;
+    height:275px;
+    margin: 0 .6em;
+  }
+
   .video-display {
     width: 60%;
   }
 
   .video-display iframe {
-    height: 450px;
+    height: 325px;
   }
 }
-
 
 
 @media all and (min-width: 1200px) {

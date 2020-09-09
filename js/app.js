@@ -99,7 +99,7 @@ function formatSearchTerms() {
   if (userInfo['temp'] >= 75) {
     userQuery += "hot weather "
   }
-  userQuery += `hairstyles ${userInfo['hair type']} hair type ${userInfo['hair length']} hair`;
+  userQuery += `hairstyles for hair type ${userInfo['hair type']} ${userInfo['hair length']} hair`;
   
   fetchVideos(userQuery);
 }
