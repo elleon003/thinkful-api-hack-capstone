@@ -1,5 +1,7 @@
 // Look at back correction functionality
 function renderHomePage(){
+  // clear out userInfo object
+  Object.keys(userInfo).forEach(entry => delete userInfo[entry]);
   $('.js-page-display').html(`
     <form id="js-postal-code" class="user-submission">
       <label for="postal-code">Enter Your Postal Code:</label>
@@ -7,15 +9,15 @@ function renderHomePage(){
       <input type="submit" class="btn" value="Next: Hairtype">
     </form>
     <div class="js-error hidden"></div>
-  `)
+  `)      
 }
 
-function renderPostalErrorPage(error){
+function renderErrorPage(error){
+  renderHomePage();
   $(".js-error").removeClass('hidden');
   $("#postal-code").val("");
   $(".js-error").html(`<h3 style="color:red">${error}</h3>`);
 }
-
 
 function renderHairTypePage() {
   $(".js-page-display").html(`
@@ -90,3 +92,29 @@ function renderHairLengthPage() {
   `)
   handleResetButton();
 }
+
+function renderVideoListing(videos) {
+  let videoFormattedList = '';
+  for (let video in videos.items) {
+    videoFormattedList += `
+      <iframe src="https://www.youtube.com/embed/${videos.items[video].id.videoId}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    `
+  }
+  renderResultsPage(videoFormattedList);
+  console.log(videos.items);
+}
+
+function renderResultsPage(videoFormattedList){
+  $('h2').text('Weather for:');
+  $('.js-page-display').html(`
+    <h3 id="js-location">${userInfo['city']}, ${userInfo['state']}</h3>
+    <p class="weather-results"><img src="img/icons/${userInfo['weather icon']}.png" alt="${userInfo['description']}"> ${userInfo['temp']}&#8457 ${userInfo['description']}</p>
+    <p class="weather-results">Winds: ${userInfo['wind speed']}mph, humidity ${userInfo['relative humidity']}&#37;</p>
+    <div class="js-videos video-display">
+      ${videoFormattedList}
+    </div>
+    <button class="btn js-reset">Start Over</button>
+    `)
+}
+// userInfo['relative humidity']
+// userInfo['wind speed']
