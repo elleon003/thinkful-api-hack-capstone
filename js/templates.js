@@ -21,7 +21,11 @@ function renderErrorPage(error){
 
 function renderHairTypePage() {
   $(".js-page-display").html(`
+    <div id="js-hair-info" class="modal">
+      <iframe id="hair-article" src="https://hairtheme.com/curly-hair-types/#ftoc-heading-3" title="Curly Hair Types Article from HairTheme.com"></iframe>
+    </div>
     <h3>Select your hair type:</h3>
+    <a class="btn" href="#js-hair-info" rel="modal:open">Help! I don't know my hair type!</a>
     <form id="js-hair-types" class="user-submission">
       <label>
         <input type="radio" name="hair-type" value="1" required>
@@ -66,7 +70,7 @@ function renderHairTypePage() {
       <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Next: Hair Length">
     </form>
-    <button class="btn js-reset">Start Over</button>
+    <button class="btn btn-reset js-reset">Start Over</button>
   `)
   handleResetButton();
 }
@@ -94,7 +98,7 @@ function renderHairLengthPage() {
       <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Show Me Some Styles!">
     </form>
-    <button class="btn js-reset">Start Over</button>
+    <button class="btn btn-reset js-reset">Start Over</button>
   `)
   handleResetButton();
 }
@@ -117,12 +121,12 @@ function renderResultsPage(videoFormattedList){
       <h3 id="js-location">${userInfo['city']}, ${userInfo['state']}</h3>
       <p class="weather-results"><img src="img/icons/${userInfo['weather icon']}.png" alt="${userInfo['description']}"> ${userInfo['temp']}&#8457 ${userInfo['description']}</p>
       <p class="weather-results">Winds: ${userInfo['wind speed']}mph, Humidity ${userInfo['relative humidity']}&#37;</p>
+      <p class="weather-results"><strong>Here are some video tutorials with suggestions for your hair. Enjoy!</strong></p>
       <div class="js-videos video-display">
         ${videoFormattedList}
       </div>
-      <button class="btn js-reset">Start Over</button>
+      <button class="btn btn-reset js-reset">Start Over</button>
+      <a class="btn" href="https://www.surveymonkey.com/r/KDHHRHG">Click here to offer feedback on the site!</a>
     </div>
     `)
 }
-// userInfo['relative humidity']
-// userInfo['wind speed']

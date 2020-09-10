@@ -1,0 +1,26 @@
+<div id="youtube-player"
+      data-video="VwH5DHGQy-E"
+      data-startseconds="439"
+      data-endseconds="570"
+      data-height="480"
+      data-width="640">
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script type="text/javascript">
+      function onYouTubeIframeAPIReady() {
+        var ctrlq = document.getElementById("youtube-player");
+        var player = new YT.Player('youtube-player', {
+          height: ctrlq.dataset.height,
+          width: ctrlq.dataset.width,
+          events: {
+            'onReady': function(e) {
+              e.target.cueVideoById({
+                videoId: ctrlq.dataset.video,
+                startSeconds: ctrlq.dataset.startseconds,
+                endSeconds: ctrlq.dataset.endseconds
+              });
+            }
+          }
+        });
+      }
+    </script>
