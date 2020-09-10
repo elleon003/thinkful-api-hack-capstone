@@ -21,7 +21,11 @@ function renderErrorPage(error){
 
 function renderHairTypePage() {
   $(".js-page-display").html(`
+    <div id="js-hair-info" class="modal">
+      <iframe id="hair-article" src="https://hairtheme.com/curly-hair-types/#ftoc-heading-3" title="Curly Hair Types Article from HairTheme.com"></iframe>
+    </div>
     <h3>Select your hair type:</h3>
+    <a class="btn" href="#js-hair-info" rel="modal:open">Help! I don't know my hair type!</a>
     <form id="js-hair-types" class="user-submission">
       <label>
         <input type="radio" name="hair-type" value="1" required>
@@ -124,5 +128,3 @@ function renderResultsPage(videoFormattedList){
     </div>
     `)
 }
-// userInfo['relative humidity']
-// userInfo['wind speed']
