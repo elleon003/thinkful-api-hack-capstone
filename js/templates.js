@@ -70,7 +70,7 @@ function renderHairTypePage() {
       <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Next: Hair Length">
     </form>
-    <button class="btn js-reset">Start Over</button>
+    <button class="btn btn-reset js-reset">Start Over</button>
   `)
   handleResetButton();
 }
@@ -98,7 +98,7 @@ function renderHairLengthPage() {
       <div class="break"></div>
       <input type="submit" role="button" class="btn" value="Show Me Some Styles!">
     </form>
-    <button class="btn js-reset">Start Over</button>
+    <button class="btn btn-reset js-reset">Start Over</button>
   `)
   handleResetButton();
 }
@@ -121,10 +121,12 @@ function renderResultsPage(videoFormattedList){
       <h3 id="js-location">${userInfo['city']}, ${userInfo['state']}</h3>
       <p class="weather-results"><img src="img/icons/${userInfo['weather icon']}.png" alt="${userInfo['description']}"> ${userInfo['temp']}&#8457 ${userInfo['description']}</p>
       <p class="weather-results">Winds: ${userInfo['wind speed']}mph, Humidity ${userInfo['relative humidity']}&#37;</p>
+      <p class="weather-results"><strong>Here are some video tutorials with suggestions for your hair. Enjoy!</strong></p>
       <div class="js-videos video-display">
         ${videoFormattedList}
       </div>
-      <button class="btn js-reset">Start Over</button>
+      <button class="btn btn-reset js-reset">Start Over</button>
+      <a class="btn" href="https://www.surveymonkey.com/r/KDHHRHG">Click here to offer feedback on the site!</a>
     </div>
     `)
 }
