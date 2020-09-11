@@ -2,6 +2,16 @@
 
 const userInfo = {};
 
+function cycleImages() {
+  let $active = $('#home-page-img-cycler .active');
+  let $next = ($active.next().length > 0) ? $active.next() : $('.home-page-img:first');
+  $next.css('z-index', 2);
+  $active.fadeOut(1500, () =>{
+    $active.css('z-index', 1).show().removeClass('active');
+    $next.css('z-index', 3).addClass('active');
+  })
+}
+
 // function to format URL query for all API calls
 function formatQuery(params) {
   const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
@@ -108,7 +118,7 @@ function formatSearchTerms() {
 function fetchVideos(userQuery) {
   const params = {
     key: yAPI,
-    maxResults: 5,
+    maxResults: 6,
     part: "snippet",
     type: "video",
     q: userQuery,
@@ -130,6 +140,7 @@ function fetchVideos(userQuery) {
 
 function runApp(){
   renderHomePage();
+  setInterval('cycleImages()', 3000);
   watchPostalForm();
   watchHairTypeForm();
   watchHairLengthForm();

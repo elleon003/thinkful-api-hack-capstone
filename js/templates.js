@@ -2,6 +2,7 @@
 function renderHomePage(){
   // clear out userInfo object
   Object.keys(userInfo).forEach(entry => delete userInfo[entry]);
+  $('#home-page-img-cycler').removeClass('hidden');
   $('.js-page-display').html(`
     <form id="js-postal-code" class="user-submission">
       <label for="postal-code">Enter Your Postal Code:</label>
@@ -20,6 +21,7 @@ function renderErrorPage(error){
 }
 
 function renderHairTypePage() {
+  $('#home-page-img-cycler').addClass('hidden');
   $(".js-page-display").html(`
     <div id="js-hair-info" class="modal">
       <iframe id="hair-article" src="https://hairtheme.com/curly-hair-types/#ftoc-heading-3" title="Curly Hair Types Article from HairTheme.com"></iframe>
