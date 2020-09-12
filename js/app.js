@@ -6,9 +6,9 @@ function cycleImages() {
   let $active = $('#home-page-img-cycler .active');
   let $next = ($active.next().length > 0) ? $active.next() : $('.home-page-img:first');
   $next.css('z-index', 2);
-  $active.fadeOut(1500, () =>{
-    $active.css('z-index', 1).show().removeClass('active');
-    $next.css('z-index', 3).addClass('active');
+  $active.fadeOut(1500, () =>{ //Fade out top image
+    $active.css('z-index', 1).show().removeClass('active'); //reset z-index
+    $next.css('z-index', 3).addClass('active'); //make the next image top
   })
 }
 
@@ -101,6 +101,7 @@ function watchHairLengthForm() {
   }))
 }
 
+// formats user response into string for YouTube API call
 function formatSearchTerms() {
   let userQuery = "";
   if (userInfo['relative humidity'] >= 50) {
@@ -125,7 +126,6 @@ function fetchVideos(userQuery) {
   }
   const queryString = formatQuery(params);
   const url = yURL + '?' + queryString;
-  console.log(url);
 
   fetch(url)
     .then(response => {
@@ -135,8 +135,9 @@ function fetchVideos(userQuery) {
       return response.json();
     })
     .then(responseJson => renderVideoListing(responseJson))
-    .catch(error => renderErrorPage(error));
+    .catch(error => renderErrorPage(error)); // **Regardless of YouTube error, user is taken to home page
 }
+
 
 function runApp(){
   renderHomePage();

@@ -1,4 +1,3 @@
-// Look at back correction functionality
 function renderHomePage(){
   // clear out userInfo object
   Object.keys(userInfo).forEach(entry => delete userInfo[entry]);
@@ -14,6 +13,7 @@ function renderHomePage(){
 }
 
 function renderErrorPage(error){
+  // Takes user to home page
   renderHomePage();
   $(".js-error").removeClass('hidden');
   $("#postal-code").val("");
@@ -113,7 +113,6 @@ function renderVideoListing(videos) {
     `
   }
   renderResultsPage(videoFormattedList);
-  console.log(videos.items);
 }
 
 function renderResultsPage(videoFormattedList){
